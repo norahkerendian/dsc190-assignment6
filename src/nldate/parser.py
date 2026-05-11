@@ -69,7 +69,7 @@ def _parse_abs_date(s: str) -> date | None:
 
 def _resolve_base(s: str, today: date) -> date | None:
     s = s.strip().lower()
-    if s == "today":
+    if s in ("today", "now"):
         return today
     if s == "tomorrow":
         return today + timedelta(days=1)
