@@ -3,6 +3,7 @@ from datetime import date, timedelta
 import calendar
 
 _MONTH_NAMES = {m.lower(): i for i, m in enumerate(calendar.month_name) if m}
+_MONTH_NAMES.update({m.lower(): i for i, m in enumerate(calendar.month_abbr) if m})
 _DAY_NAMES = [calendar.day_name[i].lower() for i in range(7)]
 _ABS_DATE_RE = re.compile(r"(\w+)\s+(\d+)(?:st|nd|rd|th)?,?\s*(\d{4})")
 _ISO_DATE_RE = re.compile(r"(\d{4})-(\d{1,2})-(\d{1,2})")
