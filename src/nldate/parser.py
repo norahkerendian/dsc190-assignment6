@@ -86,7 +86,7 @@ _OFFSET_UNIT_RE = re.compile(
 
 
 def _parse_compound_offset(s: str) -> list[tuple[int, str]]:
-    parts = re.split(r"\s+and\s+", s, flags=re.IGNORECASE)
+    parts = re.split(r"\s+and\s+|,\s*", s, flags=re.IGNORECASE)
     result: list[tuple[int, str]] = []
     for part in parts:
         m = _OFFSET_UNIT_RE.match(part.strip())
