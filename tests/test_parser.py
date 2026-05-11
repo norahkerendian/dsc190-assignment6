@@ -1,33 +1,33 @@
 from datetime import date
 
-from src.dsc190_assignment6.nldate.parser import parse
+from nldate import parser
 
 def test_tomorrow():
-    assert parse("tomorrow", today=date(2025,1,1)) == date(2025,1,2)
+    assert parser.parse("tomorrow", today=date(2025,1,1)) == date(2025,1,2)
 
 def test_a_week():
-    assert parse("a week from today", today=date(2025,1,1)) == date(2025,1,7)
+    assert parser.parse("a week from today", today=date(2025,1,1)) == date(2025,1,7)
 
 def test_yesterday():
-    assert parse("yesterday", today=date(2025,1,2)) == date(2025,1,1)
+    assert parser.parse("yesterday", today=date(2025,1,2)) == date(2025,1,1)
 
 def test_a_date():
-    assert parse("January 1st, 2025") == date(2025,1,1)
+    assert parser.parse("January 1st, 2025") == date(2025,1,1)
 
 def test_one_month():
-    assert parse("one month after January 1st, 2025") == date(2025,2,1)
+    assert parser.parse("one month after January 1st, 2025") == date(2025,2,1)
 
 def test_in_3_days():
-    assert parse("in 3 days", today=date(2025,1,1)) == date(2025,1,4)
+    assert parser.parse("in 3 days", today=date(2025,1,1)) == date(2025,1,4)
 
 def test_five_days_before_dec_31():
-    assert parse("5 days before December 1st, 2025") == date(2025, 11, 26)
+    assert parser.parse("5 days before December 1st, 2025") == date(2025, 11, 26)
 
 def test_next_tuesday():
-    assert parse("Next Tuesday", today=date(2025,1,1)) == date(2025, 1,7)
+    assert parser.parse("Next Tuesday", today=date(2025,1,1)) == date(2025, 1,7)
 
 def test_two_weeks_from_tomorrow():
-    assert parse("two weeks from tomorrow", today=date(2025,1,1)) == date(2025, 1, 15)
+    assert parser.parse("two weeks from tomorrow", today=date(2025,1,1)) == date(2025, 1, 15)
 
 def test_one_year_and_2_months_after_yesterday():
-    assert parse("1 year and 2 months after yesterday", today=date(2025,1,2)) == date(2027,3,1)
+    assert parser.parse("1 year and 2 months after yesterday", today=date(2025,1,2)) == date(2027,3,1)
