@@ -144,6 +144,10 @@ def parse(s: str, today: date | None = None) -> date | None:
         return today + timedelta(days=1)
     if s.lower() == "yesterday":
         return today - timedelta(days=1)
+    if s.lower() == "the day after tomorrow":
+        return today + timedelta(days=2)
+    if s.lower() == "the day before yesterday":
+        return today - timedelta(days=2)
 
     m = re.match(
         r"in\s+(a|an|one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
