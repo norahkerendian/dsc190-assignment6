@@ -87,11 +87,13 @@ def test_year_before():
 
 def test_unparseable_empty():
     import pytest
+
     with pytest.raises(ValueError):
         parser.parse("")
 
 
 def test_unparseable_garbage():
     import pytest
+
     with pytest.raises(ValueError):
         parser.parse("some garbage text")
