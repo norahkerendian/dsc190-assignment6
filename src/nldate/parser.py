@@ -105,7 +105,7 @@ def _apply_compound_offset(base: date, offset_str: str, sign: int) -> date:
     return result
 
 
-def parse(s: str, today: date | None = None) -> date | None:
+def parse(s: str, today: date | None = None) -> date:
     if today is None:
         today = date.today()
     s = s.strip()
@@ -178,4 +178,4 @@ def parse(s: str, today: date | None = None) -> date | None:
             sign = 1 if m.group(2).lower() in ("from", "after") else -1
             return _apply_compound_offset(base, m.group(1), sign)
 
-    return None
+    raise ValueError(f"could not parse: {s!r}")
