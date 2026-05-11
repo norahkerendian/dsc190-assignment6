@@ -138,6 +138,15 @@ def parse(s: str, today: date | None = None) -> date | None:
     if m:
         return _apply_offset(today, _parse_int(m.group(1)), m.group(2))
 
+    m = re.match(
+        r"(a|an|one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+        r"(day|week|month|year)s?\s+ago$",
+        s,
+        re.IGNORECASE,
+    )
+    if m:
+        return _apply_offset(today, -_parse_int(m.group(1)), m.group(2))
+
     d = _parse_abs_date(s)
     if d is not None:
         return d
