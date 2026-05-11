@@ -124,6 +124,20 @@ def parse(s: str, today: date | None = None) -> date | None:
                 diff = 7
             return today + timedelta(days=diff)
 
+    m = re.match(r"last\s+(\w+)", s, re.IGNORECASE)
+    if m:
+        day_name = m.group(1).lower()
+        try:
+            target = _DAY_NAMES.index(day_name)
+        except ValueError:
+            pass
+        else:
+            cur = today.weekday()
+            diff = (cur - target) % 7
+            if diff == 0:
+                diff = 7
+            return today - timedelta(days=diff)
+
     if s.lower() == "today":
         return today
     if s.lower() == "tomorrow":
