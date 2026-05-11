@@ -119,7 +119,9 @@ def parse(s: str, today: date | None = None) -> date | None:
             pass
         else:
             cur = today.weekday()
-            diff = (target - cur) % 7 + 7
+            diff = (target - cur) % 7
+            if diff == 0:
+                diff = 7
             return today + timedelta(days=diff)
 
     if s.lower() == "today":

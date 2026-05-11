@@ -32,7 +32,7 @@ def test_five_days_before_dec_31():
 
 
 def test_next_tuesday():
-    assert parser.parse("Next Tuesday", today=date(2025, 1, 1)) == date(2025, 1, 14)
+    assert parser.parse("Next Tuesday", today=date(2025, 1, 1)) == date(2025, 1, 7)
 
 
 def test_two_weeks_from_tomorrow():
@@ -64,7 +64,7 @@ def test_next_monday_from_monday():
 
 
 def test_next_friday():
-    assert parser.parse("Next Friday", today=date(2025, 1, 1)) == date(2025, 1, 10)
+    assert parser.parse("Next Friday", today=date(2025, 1, 1)) == date(2025, 1, 3)
 
 
 def test_singular_unit():
